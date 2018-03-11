@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+<% if (!reactRouter) { %>import ReactDOM from 'react-dom';<% } %>
 
 class Index extends React.Component {
 	render() {
@@ -9,4 +9,4 @@ class Index extends React.Component {
 	}
 }
 
-ReactDOM.render(<Index />, document.getElementById('App'));
+<% if (!reactRouter) { %>ReactDOM.render(<Index />, document.getElementById('App'));<% } %>

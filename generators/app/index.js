@@ -2,69 +2,37 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
+const prompts = require('./prompts/messages');
+const writeconfig = require('./generate/writeconfig');
+//const generalUtility = require('./generalUtility');
+const constants = require('./constants');
+
+const MESSAGE = `Welcome to the peachy ${chalk.red('generator-anxsaiyuki')} generator!`;
 
 module.exports = class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
     this.log(
-      yosay(`Welcome to the peachy ${chalk.red('generator-anxsaiyuki')} generator!`)
+      yosay(MESSAGE)
     );
-
-    const prompts = [
-      {
-        type: 'input',
-        name: 'name',
-        message: 'Your project name',
-        default: this.appname
-      }
-    ];
-
-    return this.prompt(prompts).then(props => {
-      // To access props later use this.props.someAnswer;
+    var props = [];
+    return this.prompt(prompts.call(this)).then(props => {
       this.props = props;
+      // this.prompt(prompts.db.call(this)).then(dbProps => {
+      //   if (dbprops === 'Y') {
+      //     this.prompt(prompts.dbChoice.call(this)).then(dbChoiceProps => {
+      //       props.push(dbChoiceProps)
+      //       console.log("test")
+      //       console.log(generalUtility.flattenObj(props));
+      //       this.props = generalUtility.flattenObj(props)
+      //     });
+      //   }
+      // });
     });
   }
   //
   writing() {
-    //=======CONFIG=======
-    //Package Json
-    this.fs.copyTpl(
-      this.templatePath('./config/_package.json'),
-      this.destinationPath('package.json'),
-      { name: this.props.name }
-    );
-
-    //Webpack
-    this.fs.copy(
-      this.templatePath('./config/_webpack.config.js'),
-      this.destinationPath('webpack.config.js')
-    );
-
-    //TODO need to determine if user wants react router or not
-    //Page JSON
-    this.fs.copy(
-      this.templatePath('./config/_page.json'),
-      this.destinationPath('page.json')
-    );
-
-    //Gulpfile
-    this.fs.copy(
-      this.templatePath('./config/_gulpfile.js'),
-      this.destinationPath('gulpfile.js')
-    );
-
-    //=======View Source Files=======
-    //html
-    this.fs.copy(
-      this.templatePath('./view/_index.html'),
-      this.destinationPath('./src/index.js')
-    );
-
-    //js
-    this.fs.copy(
-      this.templatePath('./view/_index.js'),
-      this.destinationPath('./src/index.js')
-    );
+    writeconfig.call(this)
   }
   //
   install() {
