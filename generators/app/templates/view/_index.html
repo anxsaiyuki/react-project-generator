@@ -6,5 +6,5 @@
   <body>
     <div id="App"></div>
   </body>
-  <script src="./js/index.js"></script>
+  <script src=<% if (reactRouter) { %>"./js/app.js"<% } else { %>"./js/index.js"<% } %>></script>
 </html>

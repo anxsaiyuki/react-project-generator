@@ -2,9 +2,12 @@
 
 module.exports = function() {
   //html
-  this.fs.copy(
+  this.fs.copyTpl(
     this.templatePath('./view/_index.html'),
-    this.destinationPath('./src/index.html')
+    this.destinationPath('./src/index.html'),
+    {
+      reactRouter: this.props.reactRouter
+    }
   );
 
   //js

@@ -14,8 +14,8 @@
       "loglevel": "^1.4.1",
       "path": "^0.12.7",
       "react": "^15.6.1",
-      "react-dom": "^15.6.1"<% if (reactRouter === 'Y') { %>,
-      "react-router": "^4.2.0"<% } %>
+      "react-dom": "^15.6.1"<% if (reactRouter) { %>,
+      "react-router-dom": "^4.2.2"<% } %>
     },
     "devDependencies": {
       "babel-core": "^6.25.0",

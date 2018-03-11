@@ -12,9 +12,12 @@ module.exports = function() {
   );
 
   //Webpack
-  this.fs.copy(
+  this.fs.copyTpl(
     this.templatePath('./config/_webpack.config.js'),
-    this.destinationPath('webpack.config.js')
+    this.destinationPath('webpack.config.js'),
+    {
+      reactRouter: this.props.reactRouter,
+    }
   );
 
   //TODO need to determine if user wants react router or not

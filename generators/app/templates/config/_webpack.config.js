@@ -5,11 +5,11 @@ const page = require('./page.json');
 
 module.exports = {
   cache: true,
-  entry: page,
+  entry:<% if (reactRouter) { %> './src/app.js'<% } else { %> page<% } %>,
   output: {
     path: path.join(__dirname, 'dist'),
     publicPath: '',
-    filename: 'js/[name].js',
+    filename:<% if (reactRouter) { %> 'js/app.js'<% } else { %> 'js/[name].js'<% } %>,
   },
   module: {
     loaders: [

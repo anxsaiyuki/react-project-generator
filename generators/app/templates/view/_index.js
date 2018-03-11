@@ -9,4 +9,4 @@ class Index extends React.Component {
 	}
 }
 
-<% if (!reactRouter) { %>ReactDOM.render(<Index />, document.getElementById('App'));<% } %>
+<% if (!reactRouter) { %>ReactDOM.render(<Index />, document.getElementById('App'));<% } else { %>module.exports = Index<% } %>
