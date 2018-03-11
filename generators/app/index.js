@@ -4,6 +4,7 @@ const chalk = require('chalk');
 const yosay = require('yosay');
 const prompts = require('./prompts/questions');
 const writeconfig = require('./generate/writeconfig');
+const generalUtil = require('./generalUtil');
 const mkdirp = require('mkdirp');
 const path = require('path');
 
@@ -19,19 +20,31 @@ module.exports = class extends Generator {
       yosay(MESSAGE)
     );
 
-    return this.prompt(prompts.call(this)).then(props => {
+    return this.prompt(prompts.initial.call(this)).then(props => {
       this.props = props;
     });
   }
-  //
-  // prompting2() {
-  //   return this.prompt(prompts.call(this)).then(props => {
-  //     this.props = props;
-  //   });
-  // }
+
+  serverRouterPrompt() {
+    if (this.props.serverRouter) {
+      return this.prompt(prompts.serverRouter.call(this)).then(props => {
+        //let newProps = Object.assign({}, props)
+        if (props.routerName !== '') {
+          if (!this.props.routerList) {
+            this.props.routerList = [props.routerName]
+          } else {
+            this.props.routerList.push(props.routerName)
+          }
+          this.props = generalUtil.merge(this.props, props);
+          return this.serverRouterPrompt();
+        }
+      });
+    }
+  }
 
   default() {
     if (this.props.createFolder) {
+      console.log(this.props.routerList)
       if (path.basename(this.destinationPath()) !== this.props.name) {
         this.log(`Folder created for ${this.props.name}`);
         mkdirp(this.props.name);

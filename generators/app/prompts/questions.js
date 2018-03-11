@@ -1,4 +1,4 @@
-const questions = function() {
+const initial = function() {
   return [
     {
       type: 'input',
@@ -39,7 +39,7 @@ const questions = function() {
     {
       type: 'list',
       name: 'dbChoice',
-      message: 'Do you want db',
+      message: 'Choose a DB',
       choices: ['Mysql', 'Mongoose'],
       when: (answers) => {
         return answers.db
@@ -59,10 +59,59 @@ const questions = function() {
           value: false,
         }
       ]
-    }
+    },
+    {
+      type: 'list',
+      name: 'serverRouter',
+      message: 'Do you want Server Router',
+      choices: [
+        {
+          name: 'Y',
+          value: true,
+        },
+        {
+          name: 'N',
+          value: false,
+        }
+      ]
+    },
   ];
+}
+
+const server = function() {
+  return [
+    {
+      type: 'list',
+      name: 'serverRouter',
+      message: 'Do you want Server Router',
+      choices: [
+        {
+          name: 'Y',
+          value: true,
+        },
+        {
+          name: 'N',
+          value: false,
+        }
+      ]
+    }
+  ]
+}
+
+const serverRouter = function() {
+  return [
+    {
+      type: 'input',
+      name: 'routerName',
+      message: 'Router Name (Press Enter to Exit)',
+    }
+  ]
 }
 
 
 
-module.exports = questions;
+module.exports = {
+  initial,
+  server,
+  serverRouter,
+};

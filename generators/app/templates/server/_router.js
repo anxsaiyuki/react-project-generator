@@ -7,7 +7,7 @@ router.use(function timeLog (req, res, next) {
   next()
 })
 
-// define the home page route
+// define endpoints
 router.get('/', function (req, res) {
   res.send('Example router')
 })
