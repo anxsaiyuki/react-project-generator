@@ -76,6 +76,6 @@
       "prettier"
     ]
   },
-  "repository": "anxsaiyuki/generator-anxsaiyuki",
+  "repository": "anxsaiyuki/react-project-generator",
   "license": "MIT"
 }
