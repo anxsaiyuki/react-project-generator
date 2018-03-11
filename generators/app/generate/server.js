@@ -12,9 +12,12 @@ module.exports = function() {
 
   //Setup router
   this.props.routerList.forEach((router) => {
-    this.fs.copy(
+    this.fs.copyTpl(
       this.templatePath('./server/_router.js'),
-      this.destinationPath(`./server/router/${router}.js`)
+      this.destinationPath(`./server/router/${router}.js`),
+      {
+        router: router
+      }
     )
   })
 }

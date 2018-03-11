@@ -44,7 +44,6 @@ module.exports = class extends Generator {
 
   default() {
     if (this.props.createFolder) {
-      console.log(this.props.routerList)
       if (path.basename(this.destinationPath()) !== this.props.name) {
         this.log(`Folder created for ${this.props.name}`);
         mkdirp(this.props.name);

@@ -9,7 +9,7 @@ router.use(function timeLog (req, res, next) {
 
 // define endpoints
 router.get('/', function (req, res) {
-  res.send('Example router')
+  res.send('Example router for <%= router %>')
 })
 
 module.exports = router

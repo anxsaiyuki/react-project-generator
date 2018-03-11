@@ -32,4 +32,10 @@ module.exports = function() {
     this.templatePath('./config/_gulpfile.js'),
     this.destinationPath('gulpfile.js')
   );
+
+  //Gitignore
+  this.fs.copy(
+    this.templatePath('./config/_gitignore.js'),
+    this.destinationPath('.gitignore')
+  );
 }
