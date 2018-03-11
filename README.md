@@ -16,6 +16,20 @@ Then generate your new project:
 yo anxsaiyuki
 ```
 
+Script Commands:
+
+```bash
+npm start
+
+Start Server with nodemon
+npm run start-dev
+
+Start webpack dev
+npm run dev
+
+Build src into dist folder
+npm run build
+```
 ## Getting To Know Yeoman
 
  * Yeoman has a heart of gold.

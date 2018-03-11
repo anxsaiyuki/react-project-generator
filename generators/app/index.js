@@ -2,8 +2,11 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
-const prompts = require('./prompts/messages');
+const prompts = require('./prompts/questions');
 const writeconfig = require('./generate/writeconfig');
+const mkdirp = require('mkdirp');
+const path = require('path');
+
 //const generalUtility = require('./generalUtility');
 const constants = require('./constants');
 
@@ -15,20 +18,26 @@ module.exports = class extends Generator {
     this.log(
       yosay(MESSAGE)
     );
-    var props = [];
+
     return this.prompt(prompts.call(this)).then(props => {
       this.props = props;
-      // this.prompt(prompts.db.call(this)).then(dbProps => {
-      //   if (dbprops === 'Y') {
-      //     this.prompt(prompts.dbChoice.call(this)).then(dbChoiceProps => {
-      //       props.push(dbChoiceProps)
-      //       console.log("test")
-      //       console.log(generalUtility.flattenObj(props));
-      //       this.props = generalUtility.flattenObj(props)
-      //     });
-      //   }
-      // });
     });
+  }
+  //
+  // prompting2() {
+  //   return this.prompt(prompts.call(this)).then(props => {
+  //     this.props = props;
+  //   });
+  // }
+
+  default() {
+    if (this.props.createFolder) {
+      if (path.basename(this.destinationPath()) !== this.props.name) {
+        this.log(`Folder created for ${this.props.name}`);
+        mkdirp(this.props.name);
+        this.destinationRoot(this.destinationPath(this.props.name));
+      }
+    }
   }
   //
   writing() {
