@@ -2,15 +2,18 @@ const gulp = require('gulp');
 const del = require('del');
 
 gulp.task('copy', function() {
-  const folders = ['src/**/*.html', 'src/**/*.png'];
-  // folders.map(function(folder) {
-  //  return gulp.src(folder)
-  //             .pipe(gulp.dest('./dist/'));
-  gulp.src(folders[0])
-      .pipe(gulp.dest('./dist/'));
+  const folders = [
+    ['src/**/*.html'],
+    ['src/**/*.png', 'src/**/*.jpg'],
+  ];
+  const dist = './dist/'
 
-  // gulp.src(folders[2])
-  //     .pipe(gulp.dest('./dist/'));
+  folders.forEach(function(folder) {
+    folder.forEach(function(file) {
+      gulp.src(file)
+          .pipe(gulp.dest(dist));
+    })
+  })
 });
 
 gulp.task('clean', function() {

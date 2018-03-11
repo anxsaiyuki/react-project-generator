@@ -27,8 +27,8 @@ module.exports = function() {
 
   //image
   this.fs.copy(
-    this.templatePath('.gitkeep'),
-    this.destinationPath('./src/img/.gitkeep')
+    this.templatePath('./view/img/_img.jpg'),
+    this.destinationPath('./src/img/img.jpg')
   )
 
   //React Router Included
