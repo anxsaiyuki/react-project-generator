@@ -16,6 +16,12 @@ Then generate your new project:
 yo anxsaiyuki
 ```
 
+If you want to include Flow:
+
+```bash
+npm install --global flow-bin
+```
+
 Script Commands:
 
 ```bash

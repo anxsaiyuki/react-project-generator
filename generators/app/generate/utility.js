@@ -38,4 +38,10 @@ module.exports = function() {
     this.templatePath('./config/_gitignore.js'),
     this.destinationPath('.gitignore')
   );
+
+  //Flow Config
+  this.fs.copy(
+    this.templatePath('./config/_flowconfig.js'),
+    this.destinationPath('.flowconfig')
+  );
 }
