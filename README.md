@@ -24,16 +24,22 @@ npm install --global flow-bin
 
 Script Commands:
 
+* Start Server on localhost:3000
 ```bash
-npm start (start server on localhost:3000)
-
-Start Server with nodemon (start server on localhost:3000 with nodemon)
+npm start
+```
+* Start Server with nodemon (start server on localhost:3000)
+```bash
 npm run start-dev
+```
 
-Start webpack dev (Used to create a virtual server for react project on localhost:8080)
+* Start webpack dev (Used to create a virtual server for react project on localhost:8080)
+```bash
 npm run dev
+```
 
--Build src into dist folder (This will move all the necessary files to a new folder called dist)
+* Build src into dist folder (This will move all the necessary files to a new folder called dist)
+```bash
 npm run build
 ```
 
