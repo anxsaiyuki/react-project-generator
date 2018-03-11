@@ -78,26 +78,6 @@ const initial = function() {
   ];
 }
 
-const server = function() {
-  return [
-    {
-      type: 'list',
-      name: 'serverRouter',
-      message: 'Do you want Server Router',
-      choices: [
-        {
-          name: 'Y',
-          value: true,
-        },
-        {
-          name: 'N',
-          value: false,
-        }
-      ]
-    }
-  ]
-}
-
 const serverRouter = function() {
   return [
     {
@@ -112,6 +92,5 @@ const serverRouter = function() {
 
 module.exports = {
   initial,
-  server,
   serverRouter,
 };

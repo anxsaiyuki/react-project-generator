@@ -19,6 +19,18 @@ module.exports = function() {
     }
   );
 
+  //css
+  this.fs.copy(
+    this.templatePath('./view/css/_index.css'),
+    this.destinationPath('./src/css/index.css')
+  )
+
+  //image
+  this.fs.copy(
+    this.templatePath('.gitkeep'),
+    this.destinationPath('./src/img/.gitkeep')
+  )
+
   //React Router Included
   if (this.props.reactRouter) {
     this.fs.copy(

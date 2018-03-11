@@ -22,13 +22,14 @@ module.exports = {
         },
       },
       {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('css!sass'),
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract('css-loader'),
       },
     ],
   },
   plugins: [
-    new ExtractTextPlugin('css/[name].css', {
+    new ExtractTextPlugin({
+      filename:<% if (reactRouter) { %> 'css/app.css'<% } else { %> 'css/[name].css'<% } %>,
       allChunks: true,
     }),
   ],

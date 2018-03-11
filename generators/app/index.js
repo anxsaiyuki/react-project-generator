@@ -28,7 +28,6 @@ module.exports = class extends Generator {
   serverRouterPrompt() {
     if (this.props.serverRouter) {
       return this.prompt(prompts.serverRouter.call(this)).then(props => {
-        //let newProps = Object.assign({}, props)
         if (props.routerName !== '') {
           if (!this.props.routerList) {
             this.props.routerList = [props.routerName]
