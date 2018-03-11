@@ -14,5 +14,12 @@ class Index extends React.Component<Props> {
 		)
 	}
 }
-
-<% if (!reactRouter) { %>ReactDOM.render(<Index />, document.getElementById('App'));<% } else { %>module.exports = Index<% } %>
+<% if (!reactRouter) { %>
+const dom = document.getElementById('App')
+if (dom === null) {
+	//Error
+	console.error("dom does not exist")
+} else {
+	ReactDOM.render(<Index />, dom);
+}<% } else { %>
+module.exports = Index<% } %>
