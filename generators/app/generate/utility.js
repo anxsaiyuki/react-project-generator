@@ -20,12 +20,13 @@ module.exports = function() {
     }
   );
 
-  //TODO need to determine if user wants react router or not
   //Page JSON
-  this.fs.copy(
-    this.templatePath('./config/_page.json'),
-    this.destinationPath('page.json')
-  );
+  if (!this.props.reactRouter) {
+    this.fs.copy(
+      this.templatePath('./config/_page.json'),
+      this.destinationPath('page.json')
+    );
+  }
 
   //Gulpfile
   this.fs.copy(

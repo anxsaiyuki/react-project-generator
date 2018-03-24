@@ -2,7 +2,12 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+const {
+	browserHistory,
+  IndexRoute,
+  Route,
+  Router,
+} = require('react-router');
 import Index from './index';
 
 type Props = {||};
@@ -10,11 +15,9 @@ type Props = {||};
 class App extends React.Component<Props> {
 	render() {
 		return (
-			<BrowserRouter>
-				<Switch>
+			<Router history={browserHistory}>
 					<Route path="/" component={Index}/>
-				</Switch>
-			</BrowserRouter>
+			</Router>
 		)
 	}
 }

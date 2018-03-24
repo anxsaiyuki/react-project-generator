@@ -16,7 +16,7 @@
       "path": "^0.12.7",
       "react": "^15.6.1",
       "react-dom": "^15.6.1"<% if (reactRouter) { %>,
-      "react-router-dom": "^4.2.2"<% } %>
+      "react-router": "^3.2.1"<% } %>
     },
     "devDependencies": {
       "babel-core": "^6.25.0",

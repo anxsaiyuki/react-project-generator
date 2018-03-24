@@ -1,7 +1,7 @@
 // This file configures webpack to run on the production files
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const page = require('./page.json');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');<% if (!reactRouter) { %>
+const page = require('./page.json');<% } %>
 
 module.exports = {
   cache: true,

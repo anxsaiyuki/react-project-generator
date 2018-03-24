@@ -12,7 +12,7 @@ module.exports = function() {
   );
 
   //Setup router
-  if (this.props.serverRouter) {
+  if (this.props.serverRouter && this.props.routerList.length > 0) {
     this.props.routerList.forEach((router) => {
       this.fs.copyTpl(
         this.templatePath('./server/_router.js'),

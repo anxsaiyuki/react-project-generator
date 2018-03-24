@@ -4,14 +4,15 @@ const del = require('del');
 gulp.task('copy', function() {
   const folders = [
     ['src/**/*.html'],
+    ['src/lib/**/*']
     ['src/**/*.png', 'src/**/*.jpg'],
   ];
-  const dist = './dist/'
+  const dist = ['./dist/','./dist/lib/','./dist/']
 
-  folders.forEach(function(folder) {
+  folders.forEach(function(folder,index) {
     folder.forEach(function(file) {
       gulp.src(file)
-          .pipe(gulp.dest(dist));
+          .pipe(gulp.dest(dist[index]));
     })
   })
 });
