@@ -1,6 +1,7 @@
 //=======Server=======
 
 module.exports = function() {
+
   //Server
   this.fs.copyTpl(
     this.templatePath('./server/_server.js'),
@@ -8,11 +9,12 @@ module.exports = function() {
     {
       routerList: this.props.routerList,
       serverRouter: this.props.serverRouter,
+      reactRouter: this.props.reactRouter,
     }
   );
 
   //Setup router
-  if (this.props.serverRouter && this.props.routerList.length > 0) {
+  if (this.props.serverRouter && this.props.routerList) {
     this.props.routerList.forEach((router) => {
       this.fs.copyTpl(
         this.templatePath('./server/_router.js'),
