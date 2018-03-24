@@ -11,7 +11,7 @@ app.use(parser.json());
 app.use(express.static(path.join(__dirname, '../dist')))
 
 //Router for Server
-<% if (serverRouter) { for(var i=0; i<routerList.length; i++) {%>app.use('/<%= routerList[i] %>', <%= routerList[i] %>)
+<% if (serverRouter && routerList.length > 0) { for(var i=0; i<routerList.length; i++) {%>app.use('/<%= routerList[i] %>', <%= routerList[i] %>)
 <% }} %>
 
 app.listen(PORT, () => {
