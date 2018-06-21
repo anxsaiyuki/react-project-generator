@@ -4,7 +4,7 @@ const del = require('del');
 gulp.task('copy', function() {
   const folders = [
     ['src/**/*.html'],
-    ['src/lib/**/*']
+    ['src/lib/**/*'],
     ['src/**/*.png', 'src/**/*.jpg'],
   ];
   const dist = ['./dist/','./dist/lib/','./dist/']
