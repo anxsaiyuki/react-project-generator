@@ -62,6 +62,21 @@ const initial = function() {
     },
     {
       type: 'list',
+      name: 'redux',
+      message: 'Do you want Redux',
+      choices: [
+        {
+          name: 'Y',
+          value: true,
+        },
+        {
+          name: 'N',
+          value: false,
+        }
+      ]
+    },
+    {
+      type: 'list',
       name: 'serverRouter',
       message: 'Do you want Server Router',
       choices: [

@@ -41,4 +41,31 @@ module.exports = function() {
       }
     );
   }
+
+  //Redux Included
+  if (this.props.redux) {
+    // Store
+    this.fs.copy(
+      this.templatePath('./view/store/_store.js'),
+      this.destinationPath('./src/store/store.js'),
+    );
+
+    // Action
+    this.fs.copy(
+      this.templatePath('./view/action/_listAction.js'),
+      this.destinationPath('./src/action/listAction.js'),
+    );
+
+    // Reducer
+
+    this.fs.copy(
+      this.templatePath('./view/reducer/_reducer.js'),
+      this.destinationPath('./src/reducer/reducer.js'),
+    );
+
+    this.fs.copy(
+      this.templatePath('./view/reducer/_list.js'),
+      this.destinationPath('./src/reducer/list.js'),
+    );
+  }
 }
