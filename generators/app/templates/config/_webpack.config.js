@@ -1,6 +1,9 @@
 // This file configures webpack to run on the production files
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');<% if (!reactRouter) { %>
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserJSPlugin = require('terser-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');<% if (!reactRouter) { %>
 const page = require('./page.json');<% } %>
 
 module.exports = {
@@ -12,27 +15,36 @@ module.exports = {
     filename:<% if (reactRouter) { %> 'js/app.js'<% } else { %> 'js/[name].js'<% } %>,
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
         query: {
-          presets: ['es2015', 'react', 'stage-2'],
+          presets: ['env', 'react', 'stage-2'],
         },
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('css-loader'),
+        use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader']
       },
     ],
   },
   plugins: [
-    new ExtractTextPlugin({
+    new MiniCssExtractPlugin({
       filename:<% if (reactRouter) { %> 'css/app.css'<% } else { %> 'css/[name].css'<% } %>,
-      allChunks: true,
+      chunkFilename: 'css/[id].css',
     }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      hash: true,
+      template: './src/index.html',
+      filename: 'index.html'
+    })
   ],
+  optimization: {
+    minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+  },
   resolve: {
     extensions: ['*', '.js', '.jsx'],
   },
