@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 const del = require('del');
 
-gulp.task('copy', function() {
+gulp.task('copy', function(done) {
   const folders = [
     ['src/**/*.html'],
     ['src/lib/**/*'],
@@ -15,12 +15,14 @@ gulp.task('copy', function() {
           .pipe(gulp.dest(dist[index]));
     })
   })
+  done();
 });
 
-gulp.task('clean', function() {
-  return del.sync([
+gulp.task('clean', function(done) {
+  del.sync([
     './dist/**',
   ]);
+  done();
 });
 
-gulp.task('build', ['clean', 'copy']);
+gulp.task('build', gulp.series('clean', 'copy'));
