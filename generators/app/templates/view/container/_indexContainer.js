@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addList } from '../action/listAction';
-import List from '../component/list';
+import Index from '../index';
 
 const mapStateToProps = state => (
   {
-    list: state.list
+    list: state.list.items
   }
 );
 
@@ -15,4 +15,4 @@ const mapDispatchToProps = dispatch => (
   }, dispatch)
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(List);
+export default connect(mapStateToProps, mapDispatchToProps)(Index);

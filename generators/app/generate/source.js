@@ -15,7 +15,8 @@ module.exports = function() {
     this.templatePath('./view/_index.js'),
     this.destinationPath('./src/index.js'),
     {
-      reactRouter: this.props.reactRouter
+      reactRouter: this.props.reactRouter,
+      redux: this.props.redux
     }
   );
 
@@ -31,16 +32,17 @@ module.exports = function() {
     this.destinationPath('./src/img/img.jpg')
   )
 
-  //React Router Included
-  if (this.props.reactRouter) {
-    this.fs.copy(
-      this.templatePath('./view/router/_app.js'),
-      this.destinationPath('./src/app.js'),
-      {
-        reactRouter: this.props.reactRouter
-      }
-    );
-  }
+  // App
+  const appTemplatePath = this.props.reactRouter ?
+    './view/router/_appRouter.js' :
+    './view/router/_app.js';
+  this.fs.copyTpl(
+    this.templatePath(appTemplatePath),
+    this.destinationPath('./src/app.js'),
+    {
+      redux: this.props.redux
+    }
+  );
 
   //Redux Included
   if (this.props.redux) {

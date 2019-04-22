@@ -1,14 +1,14 @@
 import {ADD_LIST} from '../action/listAction';
 
 const intialState = {
-  list: []
+  items: []
 }
 
 const list = (state = intialState, action) => {
   switch (action.type) {
     case ADD_LIST:
       return {
-        list: [...state.list, action.item]
+        items: [...state.items, action.item]
       }
     default:
       return state

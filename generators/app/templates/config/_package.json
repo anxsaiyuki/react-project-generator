@@ -16,8 +16,8 @@
       "path": "^0.12.7",
       "react": "^16.8.6",
       "react-dom": "^16.8.6"<% if (reactRouter) { %>,
-      "react-router": "^3.2.1"<% } %>
-      "react-redux": "^6.0.1"<% if (redux) { %>,
+      "react-router": "^3.2.1"<% } %><% if (redux) { %>,
+      "react-redux": "^6.0.1",
       "redux": "^4.0.1"<% } %>
     },
     "devDependencies": {

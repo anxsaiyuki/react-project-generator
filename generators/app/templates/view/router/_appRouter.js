@@ -1,7 +1,13 @@
 /* @flow */
 
 import React from 'react';
-import ReactDOM from 'react-dom';<% if (redux) { %>
+import ReactDOM from 'react-dom';
+const {
+	browserHistory,
+  IndexRoute,
+  Route,
+  Router,
+} = require('react-router');<% if (redux) { %>
 import Index from './container/indexContainer';
 import { Provider } from 'react-redux';
 import store from './store/store';<% } else { %>
@@ -13,11 +19,15 @@ class App extends React.Component<Props> {
 	render() {<% if (redux) { %>
 		return (
 			<Provider store={store}>
-        <Index />
+				<Router history={browserHistory}>
+						<Route path="/" component={Index}/>
+				</Router>
 			</Provider>
 		)<% } else { %>
 		return (
-      <Index />
+			<Router history={browserHistory}>
+					<Route path="/" component={Index}/>
+			</Router>
 		)<% } %>
 	}
 }
