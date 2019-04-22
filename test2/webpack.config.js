@@ -3,16 +3,15 @@ const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');<% if (!reactRouter) { %>
-const page = require('./page.json');<% } %>
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   cache: true,
-  entry:<% if (reactRouter) { %> './src/app.js'<% } else { %> page<% } %>,
+  entry: './src/app.js',
   output: {
     path: path.join(__dirname, 'dist'),
     publicPath: '',
-    filename:<% if (reactRouter) { %> 'js/app.js'<% } else { %> 'js/[name].js'<% } %>,
+    filename: 'js/app.js',
   },
   module: {
     rules: [
@@ -20,9 +19,9 @@ module.exports = {
         test: /\.jsx?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
-        options: {
+        query: {
           presets: ['env', 'react', 'stage-2'],
-        }
+        },
       },
       {
         test: /\.css$/,
@@ -32,7 +31,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename:<% if (reactRouter) { %> 'css/app.css'<% } else { %> 'css/[name].css'<% } %>,
+      filename: 'css/app.css',
       chunkFilename: 'css/[id].css',
     }),
     new HtmlWebpackPlugin({

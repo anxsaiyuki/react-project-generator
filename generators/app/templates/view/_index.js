@@ -1,16 +1,31 @@
 /* @flow */
 
-import React from 'react';
+import React, {Fragment} from 'react';
 <% if (!reactRouter) { %>import ReactDOM from 'react-dom';<% } %>
 //css
 require('./css/index.css');
 
 type Props = {||};
 
-class Index extends React.Component<Props> {
+type State = {
+	name: string,
+}
+
+class Index extends React.Component<Props, State> {
+	state: State = {
+		name: 'anxsaiyuki',
+	}
+
+	onButtonClick = () => {
+		alert(this.state.name)
+	}
+
 	render() {
 		return (
-			<div className="main">Index</div>
+			<Fragment>
+				<div className="main">Index</div>
+				<button onClick={this.onButtonClick}>Click Me!</button>
+			</Fragment>
 		)
 	}
 }
