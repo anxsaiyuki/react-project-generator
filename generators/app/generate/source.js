@@ -67,5 +67,11 @@ module.exports = function() {
       this.templatePath('./view/reducer/_list.js'),
       this.destinationPath('./src/reducer/list.js'),
     );
+
+    // Container
+    this.fs.copy(
+      this.templatePath('./view/container/_indexContainer.js'),
+      this.destinationPath('./src/container/indexContainer.js'),
+    );
   }
 }

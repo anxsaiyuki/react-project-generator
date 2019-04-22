@@ -8,6 +8,7 @@ module.exports = function() {
     {
       name: this.props.name,
       reactRouter: this.props.reactRouter,
+      redux: this.props.redux,
     }
   );
 
