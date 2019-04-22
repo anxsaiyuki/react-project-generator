@@ -29,6 +29,7 @@ class Index extends React.Component<Props, State> {
 		)
 	}
 }
+
 <% if (!reactRouter) { %>
 const dom = document.getElementById('App')
 if (dom === null) {
